@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# script/bootstrap: Resolve all dependencies that the application requires to
+#                   run.
+
+set -e
+
+echo "Installing required dependencies for Anaconda";
+
+
+#######################################
+#- Variable Setup
+#######################################
+THE_GID="1066";
+THE_GROUP="conda";
+THE_APP="conda";
+PYTHON_VERSION="3.9";
+
+#this is because this file is synced to my dotfiles repo and will be symbolically linked later
+THE_RC="/workspaces/.codespaces/.persistedshare/dotfiles/.bashrc";
+CONDA_EXE=$(which conda)
+CONDA_DIR="/opt/conda";
+CONDA_ENV_NAME="machine_learning";
+
+sudo groupadd -r "${THE_GROUP}" --gid ${THE_GID} || echo "...failed to add group ${THE_GROUP}, perhaps it already exists.";
+
+THE_VERIFIED_GID=$(getent group conda | awk -F: '{printf "%d", $3}')
+echo "...verified ${THE_GROUP}'s Group Id is: ${THE_VERIFIED_GID}";
+
+if ! [ -f /etc/profile.d/conda.sh ];
+then
+	sudo ln -s ${CONDA_DIR}/etc/profile.d/conda.sh /etc/profile.d/conda.sh  || echo "...failed to link conda.sh to /etc/profile.d";
+else
+	echo ".../etc/profile.d/conda.sh already symbolically linked";
+fi
+
+IS_SOURCED=$(grep "conda.sh" "${THE_RC}" | wc -l);
+if [ "${IS_SOURCED}" -eq 0 ];
+then
+	sudo echo ". /usr/local/${THE_APP}/etc/profile.d/conda.sh" >> "${THE_RC}" || echo "...failed to include source reference of conda.sh in .bashrc";
+else
+	echo "...${THE_RC} already setup for sourcing conda.";
+	echo "......this will later be symbolically linked to ~/.bashrc";
+fi
+
+IS_ACTIVATED=$(grep "conda activate base" "${THE_RC}" | wc -l)
+if [ "${IS_ACTIVATED}" -eq 0 ];
+then
+	sudo echo "${THE_APP} activate base" >> "${THE_RC}"  || echo "...failed to include call to conda activate in .bashrc";
+else
+	echo "...${THE_RC} already setup for conda activation.";
+	echo "......this will later be symbolically linked to ~/.bashrc";
+fi
+
+THE_USERNAME="vscode";
+sudo /usr/sbin/usermod -aG "${THE_GROUP}" "${THE_USERNAME}"  || echo "...failed to usermod -aG ${THE_GROUP} ${THE_USERNAME}"
+
+#######################################
+#- Install required Anaconda Packages
+#######################################
+sudo ${CONDA_EXE} env create --file /workspaces/jbooks/environment/archless_environment.yml

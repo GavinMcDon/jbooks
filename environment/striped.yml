@@ -1,0 +1,22 @@
+name: machine_learning
+prefix: /opt/conda/envs/machine_learning
+channels:
+  - defaults
+dependencies:
+  - bs4
+  - numpy
+  - netcdf4
+  - jupyter
+  - gdal
+  - imageio
+  - cartopy
+  - mkl
+  - nltk
+  - pathlib
+  - tensorflow
+  - jupyterlab
+  - pandas
+  - tensorflow-gpu
+  - scikit-learn
+  - matplotlib
+  - python=3.9
