@@ -7,11 +7,16 @@ If you want to clone this repository and setup the environment yourself please s
 
 If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
-Note that there were issues with Codespaces and containers, especially forwarding ports so be aware that while a machine_learning environment gets built that doesn't mean it's prime time for these notebooks but it will give you a huge jump start.
-
 You can manually perform this step, see below, if desired.
 
 You will need data to run these notebooks.
+
+# Github Codespaces
+
+Note that due to Cross Origin (CORS) blocks you have to do the following when using Jupyter Notebooks / Lab with Github Codespaces
+
+1.  jupyter lab --ServerApp.disable_check_xsrf=False --ServerApp.allow_origin=\'\*\'
+2.  In the Ports section of the interactive portion of Codespaces change the port from Private to Public (this cannot be configured and must be done per session by hand).
 
 # Get the data
 Download the tarfile and store it at <root>/data after untarring the file:

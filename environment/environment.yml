@@ -1,5 +1,4 @@
 name: machine_learning
-prefix: /opt/conda/envs/machine_learning
 channels:
   - defaults
 dependencies:
@@ -271,3 +270,4 @@ dependencies:
   - zipp=3.8.0=py39h06a4308_0
   - zlib=1.2.13=h5eee18b_0
   - zstd=1.5.2=ha4553b6_0
+prefix: /opt/conda/envs/machine_learning
