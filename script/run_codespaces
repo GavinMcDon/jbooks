@@ -1,0 +1,15 @@
+#!/bin/sh
+
+CODESPACE_IP_ADDR="0.0.0.0";
+CODESPACE_ORIGIN=${hostname};
+CODESPACE_PORT="8080";
+
+#echo "If using Codespaces open the Port from Private to Public after executing:";
+#echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; jupyter lab --port=${CODESPACE_PORT} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'https://${CODESPACE_NAME}-${CODESPACE_PORT}.githubpreview.dev\'"
+#echo ".......calling this command.";
+#jupyter lab --port="${CODESPACE_PORT}" --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'https://${CODESPACE_NAME}-${CODESPACE_PORT}.githubpreview.dev\'
+
+echo "If using Codespaces open the Port from Private to Public after executing:";
+echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; jupyter lab --port=${CODESPACE_PORT} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"
+echo ".......calling this command.";
+jupyter lab --port="${CODESPACE_PORT}" --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'
