@@ -17,11 +17,12 @@ Note that due to Cross Origin (CORS) blocks you have to do the following when us
 
 1.  jupyter lab --ServerApp.disable_check_xsrf=False --ServerApp.allow_origin=\'\*\'
 2.  In the Ports section of the interactive portion of Codespaces change the port from Private to Public (this cannot be configured and must be done per session by hand).
+3.  Or look in script/run_codespaces and execute that script.
 
 # Get the data
 Download the tarfile and store it at <root>/data after untarring the file:
 
-https://drive.google.com/file/d/1MdPfxP5s9vrbc0WM79IkpG0alJ00PDLg/view?usp=share_link
+https://drive.google.com/file/d//1vSq-KCfEL_KoxdE4lxeO2rEKU77kiEkR/view?usp=share_link
 
 # Register the Conda environment manually
 
@@ -68,5 +69,14 @@ sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning/ --file
 # Clean Up the Anaconda release to make disk space
 sudo $(which conda) clean --all -y
 
+# Cloud Provider CLI commands
+
+Google Cloud Provider (GDP) - `gcloud`
+
+Amazon Web Services (AWS) - `aws`
+
+Azure - `az`
+
 # References
 https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
+

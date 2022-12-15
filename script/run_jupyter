@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#######################################
+#- Source Variable Setup
+#######################################
+export THE_CONFIG_DIR="/workspaces/jbooks/script";
+export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
+
+echo "...establishing variables.";
+if ! [ -f "${THE_CONFIG}" ];
+then
+    echo "...attempted to source ${SOURCE_FILE} and could not find it.  Without this file there's no point in attempting to continue.";
+    exit 1
+fi
+
+    source "${THE_CONFIG}";
+
+if ! [ -f "${CONDA_EXE}" ];
+then
+    echo "Could not find ${CONDA_EXE} which is required to activate the ${CONDA_ENV} environment.";
+    echo "Please find the appropriate location and rectify.  Check your build environment logs ~/post*.log for clues.";
+    exit 1
+fi
+
+echo "If using Codespaces open the Port from Private to Public after executing:";
+echo ".......${CONDA_EXE} activate ${CONDA_ENV}";
+echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"
+echo ".......calling this command.";
+${CONDA_EXE} activate ${CONDA_ENV};
+${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'
