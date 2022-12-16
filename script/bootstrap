@@ -137,3 +137,12 @@ else
 fi
 
 cd "${ORIGINAL_DIR}";
+
+#######################################
+#- Register the CUDA library with the system  (will be impacted by new version releases)
+#######################################
+echo "...symbolically linking /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.11.8.89 to same dir with name libcuda.so.1 in support of Tensorflow.";
+sudo ln -s /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.11.8.89 /usr/local/cuda/targets/x86_64-linux/lib/libcuda.so.1;
+
+echo "...adding CUDA library to /etc/profile to ensure it's always set.";
+sudo echo "export LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:/usr/local/cuda/targets/x86_64-linux/lib\"" >> ~/.profile;
