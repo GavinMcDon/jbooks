@@ -8,6 +8,10 @@ If you want to clone this repository and setup the environment yourself please s
 
 If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
+Make sure you source your .bashrc prior to starting with this notebook.
+
+`source ~/.bashrc`
+
 You can manually perform this step, see below.
 
 You will need data to run these notebooks.

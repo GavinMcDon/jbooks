@@ -75,12 +75,12 @@ else
 fi
 
 echo "...testing for conda activation in your ${THE_RC}";
-IS_ACTIVATED=$(grep "conda activate base" "${THE_RC}" | wc -l)
+IS_ACTIVATED=$(grep "conda activate machine_learning" "${THE_RC}" | wc -l)
 if [ "${IS_ACTIVATED}" -eq 0 ];
 then
     if [ -f "${THE_RC}" ];
     then
-        sudo echo "${THE_APP} activate base" >> "${THE_RC}"  || echo "...failed to include call to conda activate in .bashrc";
+        sudo echo "${THE_APP} activate machine_learning" >> "${THE_RC}"  || echo "...failed to include call to conda activate in .bashrc";
     else
         echo "...unable to locate the ${THE_RC}, you might have a bigger problem as in Anaconda is not installed.";
     fi
