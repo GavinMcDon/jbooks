@@ -1,8 +1,12 @@
 #!/bin/bash
 
-#######################################
-#- Source Variable Setup
-#######################################
+#*** VARIABLES ***
+#############################################################
+#  \ \   / / \  |  _ \|_ _|  / \  | __ )| |   | ____/ ___|
+#   \ \ / / _ \ | |_) || |  / _ \ |  _ \| |   |  _| \___ \
+#    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
+#     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
+#############################################################
 export THE_CONFIG_DIR="/workspaces/jbooks/script";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
@@ -22,6 +26,13 @@ then
     exit 1
 fi
 
+#*** MAIN ***
+#############################################################
+#       |  \/  |  / \  |_ _| \ | |
+#       | |\/| | / _ \  | ||  \| |
+#       | |  | |/ ___ \ | || |\  |
+#       |_|  |_/_/   \_\___|_| \_|
+#############################################################
 echo "If using Codespaces open the Port from Private to Public after executing:";
 echo ".......${CONDA_EXE} activate ${CONDA_ENV}";
 echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"

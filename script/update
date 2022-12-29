@@ -4,10 +4,9 @@
 
 set -e
 
-cd "$(dirname "$0")/.."
-
-script/bootstrap
+#cd "$(dirname "$0")/.."
 
 echo "==> Updating whatever is required for an update such as finding dependencies or updating data files…"
+sudo script/bootstrap
 
 

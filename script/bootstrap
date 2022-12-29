@@ -4,12 +4,23 @@
 # run.
 
 #set -e
+#================================================================
+# HEADER
+#================================================================
+funct_result=$(date +'%Y%m%d:%H%M')
+start_time=$(date +%s);
+echo "BEGIN";
+
+
+#*** VARIABLES ***
+#############################################################
+#  \ \   / / \  |  _ \|_ _|  / \  | __ )| |   | ____/ ___|
+#   \ \ / / _ \ | |_) || |  / _ \ |  _ \| |   |  _| \___ \
+#    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
+#     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
+#############################################################
 
 echo "Installing required dependencies for Anaconda";
-
-#######################################
-#- Source Variable Setup
-#######################################
 export THE_CONFIG_DIR="/workspaces/jbooks/script";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
@@ -33,6 +44,27 @@ else
     exit 0
 fi
 
+#*** FUNCTIONS ***
+#############################################################
+#    |  ___| | | | \ | |/ ___|_   _|_ _/ _ \| \ | / ___|
+#    | |_  | | | |  \| | |     | |  | | | | |  \| \___ \
+#    |  _| | |_| | |\  | |___  | |  | | |_| | |\  |___) |
+#    |_|    \___/|_| \_|\____| |_| |___\___/|_| \_|____/
+#############################################################
+#None
+
+
+#*** MAIN ***
+#############################################################
+#       |  \/  |  / \  |_ _| \ | |
+#       | |\/| | / _ \  | ||  \| |
+#       | |  | |/ ___ \ | || |\  |
+#       |_|  |_/_/   \_\___|_| \_|
+#############################################################
+
+#================================================================
+# Create a group for Anaconda
+#================================================================
 echo "...adding group for conda.";
 echo "...testing for group named conda.";
 IS_CONDA_GROUP=$(getent group conda | wc -l);
@@ -57,6 +89,9 @@ else
     echo "...${CONDA_LINK} already symbolically linked";
 fi
 
+#================================================================
+# Source to bashrc
+#================================================================
 echo "...testing for sourcing of conda.sh in your ${THE_RC}";
 IS_SOURCED=$(grep "conda.sh" "${THE_RC}" | wc -l);
 if [ "${IS_SOURCED}" -eq 0 ];
@@ -90,12 +125,15 @@ else
 fi
 
 
+#================================================================
+# Ensure vscode is registered
+#================================================================
 THE_USERNAME="vscode";
 sudo /usr/sbin/usermod -aG "${THE_GROUP}" "${THE_USERNAME}"  || echo "...failed to usermod -aG ${THE_GROUP} ${THE_USERNAME}"
 
-#######################################
-#- Install required Anaconda Packages
-#######################################
+#================================================================
+# Install required Anaconda Packages
+#================================================================
 if [ -f "${CONDA_EXE}" ];
 then
     if [ -f "${CONDA_EXE}" ];
@@ -109,9 +147,9 @@ else
 fi
 
 
-#######################################
+#================================================================
 #- Install required folders and data associated with this effort
-#######################################
+#================================================================
 for the_dir in ${THE_DIRS[@]}
 do
     echo "...creating ${the_dir}"
@@ -119,9 +157,9 @@ do
     ${CHMOD_EXE} -R u+rwx "/workspaces/${the_dir}";
 done
 
-#######################################
+#================================================================
 #- Download the data file and place it for the user
-#######################################
+#================================================================
 export ORIGINAL_DIR=$(pwd);
 cd "${THE_ROOT}";
 confirm=$( ${WGET_EXE} --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='$GOOGLE_FILE_ID -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
@@ -138,11 +176,16 @@ fi
 
 cd "${ORIGINAL_DIR}";
 
-#######################################
+#================================================================
 #- Register the CUDA library with the system  (will be impacted by new version releases)
-#######################################
+#================================================================
 echo "...symbolically linking /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.11.8.89 to same dir with name libcuda.so.1 in support of Tensorflow.";
 sudo ln -s /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.11.8.89 /usr/local/cuda/targets/x86_64-linux/lib/libcuda.so.1;
 
 echo "...adding CUDA library to /etc/profile to ensure it's always set.";
 sudo echo "export LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}:/usr/local/cuda/targets/x86_64-linux/lib\"" >> ~/.profile;
+
+end_time=$(date +%s);
+echo "Execution time was $((end_time - start_time)) s.";
+echo "END";
+

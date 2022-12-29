@@ -1,8 +1,12 @@
 #!/bin/bash
 
-#######################################
-#- Source Variable Setup
-#######################################
+#*** VARIABLES ***
+#############################################################
+#  \ \   / / \  |  _ \|_ _|  / \  | __ )| |   | ____/ ___|
+#   \ \ / / _ \ | |_) || |  / _ \ |  _ \| |   |  _| \___ \
+#    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
+#     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
+#############################################################
 export THE_CONFIG_DIR="/workspaces/jbooks/script";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
@@ -21,6 +25,14 @@ then
     echo "Please find the appropriate location and rectify.  Check your build environment logs ~/post*.log for clues.";
     exit 1
 fi
+
+#*** MAIN ***
+#############################################################
+#       |  \/  |  / \  |_ _| \ | |
+#       | |\/| | / _ \  | ||  \| |
+#       | |  | |/ ___ \ | || |\  |
+#       |_|  |_/_/   \_\___|_| \_|
+#############################################################
 
 echo "If using Codespaces open the Port from Private to Public after executing:";
 echo "Ensure you have called \"conda activate ${CONDA_ENV}\" before invoking this script.";

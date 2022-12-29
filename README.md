@@ -136,6 +136,11 @@ Amazon Web Services (AWS) - `aws`
 
 Azure - `az`
 
+# Create A GitHub Workflow
+
++ https://docs.github.com/en/actions/quickstart
++ https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
+
 # References
 https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
 
