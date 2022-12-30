@@ -8,37 +8,34 @@
 	"settings": { "terminal.integrated.shell.linux": "/bin/bash" }
     },
 
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    //"image": "mcr.microsoft.com/devcontainers/universal:2",
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+
     "hostRequirements": {
        "cpus":    2,
        "memory": "8gb",
-       "storage":"50gb"
+       "storage":"60gb"
     },
     "features": {
         "ghcr.io/devcontainers/features/nvidia-cuda:1": {
             "installCudnn": true
         },
+	//-removed as they are not required for this particular effort (good to know)
+        //"ghcr.io/devcontainers/features/aws-cli:1": {},
+        //"ghcr.io/devcontainers/features/azure-cli:1": {},
+        //"ghcr.io/dhoeric/features/google-cloud-cli:1": {},
         "ghcr.io/devcontainers/features/common-utils:1":{
             "installZsh": "true",
             "username": "vscode",
-            //"uid": "1001",
-            //"gid": "1001",
+            "uid": "1001",
+            "gid": "1001",
             "upgradePackages": "true"
-        },
-        //"ghcr.io/devcontainers/features/python:1": "none",
-        "ghcr.io/devcontainers/features/node:1": "none",
-	    //"ghcr.io/devcontainers/features/git:1": {
-        //    "version": "latest",
-        //    "ppa": "false"
-        //},
-	//"ghcr.io/devcontainers/features/anaconda:1": {} 
-	//ghcr.io/devcontainers/features/aws-cli:1": {},
-	//ghcr.io/devcontainers/features/azure-cli:1": {},
-	//ghcr.io/dhoeric/features/google-cloud-cli:1": {}
+        }
     },
     "overrideFeatureInstallOrder": [
         "ghcr.io/devcontainers/features/common-utils"
     ],
+
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -62,7 +59,7 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-			    "ms-toolsai.jupyter"
+		   	        "ms-toolsai.jupyter"
 			]
 		}
 	},

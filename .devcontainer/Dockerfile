@@ -1,18 +1,47 @@
-# [Choice] Python version (use -bullseye variants on local arm64/Apple Silicon): 3, 3.10, 3.9, 3.8, 3.7, 3.6, 3-bullseye, 3.10-bullseye, 3.9-bullseye, 3.8-bullseye, 3.7-bullseye, 3.6-bullseye, 3-buster, 3.10-buster, 3.9-buster, 3.8-buster, 3.7-buster, 3.6-buster
-#ARG VARIANT=3-bullseye
-ARG RELEASE_VERSION=3.9
-FROM python:${RELEASE_VERSION}
+#Dockerfile with basic configurations spelled out
 
-ARG RELEASE_VERSION=latest
-FROM bitnami/git:${RELEASE_VERSION}
-FROM node:${RELEASE_VERSION}
-FROM continuumio/anaconda3
-FROM hashicorp/terraform:${RELEASE_VERSION}
-FROM amazon/aws-cli:${RELEASE_VERSION}
-FROM mcr.microsoft.com/azure-cli:${RELEASE_VERSION}
-#FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:${RELEASE_VERSION}
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:410.0.0
+#ARG IMG=python:3.9
+#FROM $IMG AS base
+#ARG IMG
+#RUN echo "...installed $IMG"
 
+#ARG IMG=bitnami/git:latest
+#FROM $IMG
+#ARG IMG
+#RUN echo "...installed $IMG"
+
+ARG IMG=continuumio/anaconda3
+FROM $IMG
+ARG IMG
+RUN echo "...installed $IMG"
+
+#ARG IMG=hasicorp/terraform:latest
+#FROM $IMG
+#ARG IMG
+#RUN echo "...installed $IMG"
+
+#ARG IMG=amazon/aws-cli:latest
+#FROM $IMG
+#ARG IMG
+#RUN echo "...installed $IMG"
+
+#ARG IMG=mcr.microsoft.com/azure-cli:latest
+#FROM $IMG
+#ARG IMG
+#RUN echo "...installed $IMG"
+
+#ARG IMG=gcr.io/google.com/cloudsdktool/google-cloud-cli:410.0.0
+#FROM $IMG
+#ARG IMG
+#RUN echo "...installed $IMG"
+
+
+#########################################
+#- Ensure everything is up to date
+#########################################
+RUN apt-get update -y
+
+#########################################
 #- Install VIM
 #########################################
 ARG PACKAGES=vim
@@ -30,3 +59,4 @@ RUN apt-get install ${PACKAGES} -y
 RUN apt-get clean -y
 
 CMD ["rm", "-rf", "/var/lib/apt/lists/*"]
+
