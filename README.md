@@ -136,6 +136,28 @@ Amazon Web Services (AWS) - `aws`
 
 Azure - `az`
 
+# Load new Kernel on the fly
+
++ mamba env create -f /home/jovyan/environment.yml
+
++ echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/jovyan/.bash_profile
+
++ echo "conda deactivate" >> /home/jovyan/.bash_profile
+
++ echo "conda activate <your environment name>" >> /home/jovyan/.bash_profile
+
++ . /opt/conda/etc/profile.d/conda.sh
+
++ conda activate <your environment name>
+
++ python -m ipykernel install --user --name <your environment name>
+
++ source /home/jovyan/.bash_profile
+
+Your Jupyter enviroment will start showing in 10-20 seconds.
+
+You will need data to run these notebooks, see the Get the Data section.
+
 # Create A GitHub Workflow
 
 + https://docs.github.com/en/actions/quickstart
