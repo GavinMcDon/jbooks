@@ -158,6 +158,21 @@ Your Jupyter enviroment will start showing in 10-20 seconds.
 
 You will need data to run these notebooks, see the Get the Data section.
 
+# Ubuntu Server Install GPU Drivers
+
++ `sudo ubuntu-drivers install –gpgpu`
+    + This method worked best and gives you the best possible drive.
++ `sudo ubuntu-drivers list`
+    + See what actually got installed.
++ `sudo reboot now`
+    + Restart the system because the kernel modules for the driver need to be loaded (easiest).
++ `cat /proc/driver/nvidia/version`
+    + What version are you using?
++ `lsmod | grep nvidia`
+    + Are the kernel modules loaded?
++ `sudo apt install nvidia-utils-535-server`
+    + Install utility tools like `nvidia-smi`
+
 # Create A GitHub Workflow
 
 + https://docs.github.com/en/actions/quickstart
