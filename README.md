@@ -181,5 +181,6 @@ You will need data to run these notebooks, see the Get the Data section.
 + https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
 
 # References
-https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
++ https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
++ https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 
