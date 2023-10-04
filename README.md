@@ -160,6 +160,8 @@ You will need data to run these notebooks, see the Get the Data section.
 
 # Ubuntu Server Install GPU Drivers
 
++ `lshw`
+    + See the list of available HW.
 + `sudo ubuntu-drivers install –gpgpu`
     + This method worked best and gives you the best possible drive.
 + `sudo ubuntu-drivers list`
