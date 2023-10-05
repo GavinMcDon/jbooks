@@ -7,13 +7,14 @@
 #    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
 #     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
 #############################################################
-export THE_CONFIG_DIR="/workspaces/jbooks/script";
+#export THE_CONFIG_DIR="/workspaces/jbooks/script";
+export THE_CONFIG_DIR="./cfg/";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
 echo "...establishing variables.";
 if ! [ -f "${THE_CONFIG}" ];
 then
-    echo "...attempted to source ${SOURCE_FILE} and could not find it.  Without this file there's no point in attempting to continue.";
+    echo "...attempted to source ${THE_CONFIG} and could not find it.  Without this file there's no point in attempting to continue.";
     exit 1
 fi
 
