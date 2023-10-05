@@ -7,7 +7,6 @@
 #    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
 #     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
 #############################################################
-#export THE_CONFIG_DIR="/workspaces/jbooks/script";
 export THE_CONFIG_DIR="./cfg/";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
@@ -16,13 +15,14 @@ if ! [ -f "${THE_CONFIG}" ];
 then
     echo "...attempted to source ${THE_CONFIG} and could not find it.  Without this file there's no point in attempting to continue.";
     exit 1
+else
+    source "${THE_CONFIG}";
 fi
 
-    source "${THE_CONFIG}";
-
-if ! [ -f "${CONDA_EXE}" ];
+export the_conda=$(which ${CONDA_EXE});
+if ! [ -f "${the_conda}" ];
 then
-    echo "Could not find ${CONDA_EXE} which is required to activate the ${CONDA_ENV} environment.";
+    echo "Could not find ${the_conda} which is required to activate the ${CONDA_ENV} environment.";
     echo "Please find the appropriate location and rectify.  Check your build environment logs ~/post*.log for clues.";
     exit 1
 fi
@@ -35,8 +35,12 @@ fi
 #       |_|  |_/_/   \_\___|_| \_|
 #############################################################
 echo "If using Codespaces open the Port from Private to Public after executing:";
-echo ".......${CONDA_EXE} activate ${CONDA_ENV}";
+echo "......../script/load_conda";
+source ./script/load_conda
+
+echo ".......conda activate ${CONDA_ENV}";
+conda activate ${CONDA_ENV};
+
 echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"
 echo ".......calling this command.";
-${CONDA_EXE} activate ${CONDA_ENV};
 ${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'
