@@ -56,11 +56,11 @@ You will need data to run these notebooks, see the Get the Data section.
 
 `conda install imageio seaborn plotly bokeh matplotlib  -y`
 
-`conda install -c condaforge pathlib netcdf4 nltk wordcloud bs4  -y`
+`conda install -c conda-forge pathlib netcdf4 nltk wordcloud bs4  -y`
 
-`conda install -c condaforge proj -y`
+`conda install -c conda-forge proj -y`
 
-`conda install -c condaforge contextily descartes geopandas cartopy shapely  -y`
+`conda install -c conda-forge contextily descartes geopandas cartopy shapely  -y`
 
 # Build the environment using Anaconda manually in Codespaces
 
@@ -160,20 +160,36 @@ You will need data to run these notebooks, see the Get the Data section.
 
 # Ubuntu Server Install GPU Drivers
 
++ `find /lib/modules/$(uname -r) -type f -name '*.ko'`
+    + Display all available modules. 
+
 + `lshw`
++ `sudo lshw -c video`
     + See the list of available HW.
-+ `sudo ubuntu-drivers install –gpgpu`
-    + This method worked best and gives you the best possible drive.
+
++ `sudo apt-get install linux-headers-$(uname -r)`
++ `sudo apt-key del 7fa2af80`
++ `sudo apt install build-essential libglvnd-dev pkg-config`
+#+ `sudo apt-get install cuda-drivers-535`
+#+ `sudo apt-get install nvidia-kernel-open-535`
+#+ `sudo apt install nvidia-utils-535-server`
+#    + Install utility tools like `nvidia-smi`
 + `sudo ubuntu-drivers list`
     + See what actually got installed.
++ `sudo ubuntu-drivers install --gpgpu`
+    + This method worked best and gives you the best possible drive.
 + `sudo reboot now`
     + Restart the system because the kernel modules for the driver need to be loaded (easiest).
 + `cat /proc/driver/nvidia/version`
     + What version are you using?
 + `lsmod | grep nvidia`
     + Are the kernel modules loaded?
-+ `sudo apt install nvidia-utils-535-server`
-    + Install utility tools like `nvidia-smi`
+
+# Ubuntu Clean up 
++ `sudo rm -rf /etc/modprobe.d/nvidia-graphics-drivers.conf`
++ `sudo update-initramfs -u`
++ `sudo apt remove *nvidia*`
++ `sudo reboot now`
 
 # Create A GitHub Workflow
 
