@@ -162,10 +162,10 @@ You will need data to run these notebooks, see the Get the Data section.
 
 + `lshw`
     + See the list of available HW.
-+ `sudo ubuntu-drivers install –gpgpu`
-    + This method worked best and gives you the best possible drive.
 + `sudo ubuntu-drivers list`
-    + See what actually got installed.
+    + See what is actually available.
++ `sudo ubuntu-drivers install –-gpgpu`
+    + This method worked best and gives you the best possible drive (maybe).
 + `sudo reboot now`
     + Restart the system because the kernel modules for the driver need to be loaded (easiest).
 + `cat /proc/driver/nvidia/version`
@@ -174,6 +174,8 @@ You will need data to run these notebooks, see the Get the Data section.
     + Are the kernel modules loaded?
 + `sudo apt install nvidia-utils-535-server`
     + Install utility tools like `nvidia-smi`
++ `nvidia-smi`
+    + This will show you GPU availability.
 
 # Create A GitHub Workflow
 
