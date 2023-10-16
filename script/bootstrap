@@ -21,7 +21,8 @@ echo "BEGIN";
 #############################################################
 
 echo "Installing required dependencies for Anaconda";
-export THE_CONFIG_DIR="/workspaces/jbooks/script";
+#export THE_CONFIG_DIR="/workspaces/jbooks/script";
+export THE_CONFIG_DIR="/workspaces/jbooks/cfg";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
 echo "...establishing variables.";
@@ -37,7 +38,8 @@ if [ -f "${CONDA_EXE}" ];
 then
     echo "...confirmed Anaconda executable is at least present, continue build.";
 else
-    echo "...unable to locate ${CONDA_EXE}, cannot create an Anaconda env without this executable.";
+    echo "First Check";
+    echo "...unable to locate conda executable ${CONDA_EXE}, cannot create an Anaconda env without this executable.";
     echo "Perhaps Anaconda isn't installed.";
     echo "CHECK YOUR devcontainer / Dockerfile configuration.";
     #exit gracefully so the dotfiles carry into the build at least.
@@ -100,7 +102,7 @@ then
     then
         sudo echo ". /usr/local/${THE_APP}/etc/profile.d/conda.sh" >> "${THE_RC}" || echo "...failed to include source reference of conda.sh in ${THE_RC}";
     else
-        echo "...unable to locate the ${THE_RC}, you might have a bigger problem as in Anaconda is not installed.";
+        echo "...unable to locate the configuration file, ${THE_RC}, you might have a bigger problem as in Anaconda is not installed.";
 	echo "......adding source reference to ~/.bashrc";
         sudo echo ". /usr/local/${THE_APP}/etc/profile.d/conda.sh" >> ~/.bashrc || echo "...failed to include source reference of conda.sh in .bashrc";
     fi
@@ -117,7 +119,7 @@ then
     then
         sudo echo "${THE_APP} activate machine_learning" >> "${THE_RC}"  || echo "...failed to include call to conda activate in .bashrc";
     else
-        echo "...unable to locate the ${THE_RC}, you might have a bigger problem as in Anaconda is not installed.";
+        echo "...unable to locate the configuration file ${THE_RC}, you might have a bigger problem as in Anaconda is not installed.";
     fi
 else
     echo "...${THE_RC} already setup for conda activation.";
@@ -140,10 +142,10 @@ then
     then
         sudo ${CONDA_EXE} env create --file "${THE_ANACONDA_ENV}"
     else
-        echo "...unable to locate ${THE_ANACONDA_ENV}, your repo has an issue.";
+        echo "...unable to locate the conda executable ${THE_ANACONDA_ENV}, your repo has an issue.";
     fi
 else
-    echo "...unable to locate ${CONDA_EXE}, cannot create an Anaconda env without this executable.  Perhaps Anaconda isn't installed.";
+    echo "...unable to locate the conda executable ${CONDA_EXE}, cannot create an Anaconda env without this executable.  Perhaps Anaconda isn't installed.";
 fi
 
 
@@ -171,7 +173,7 @@ then
     ${RM_EXE} -rf "${THE_DATA}";
     ${CHMOD_EXE} -R u+rwx "${THE_ROOT}/data";
 else
-    echo "...unable to locate ${THE_DATA}.  Perhaps the download didn't work.  Without ${THE_ROOT}/data your notebook won't work.";
+    echo "...unable to locate the data location, ${THE_DATA}.  Perhaps the download didn't work.  Without ${THE_ROOT}/data your notebook won't work.";
 fi
 
 cd "${ORIGINAL_DIR}";
