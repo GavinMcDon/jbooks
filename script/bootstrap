@@ -21,7 +21,6 @@ echo "BEGIN";
 #############################################################
 
 echo "Installing required dependencies for Anaconda";
-#export THE_CONFIG_DIR="/workspaces/jbooks/script";
 export THE_CONFIG_DIR="/workspaces/jbooks/cfg";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
