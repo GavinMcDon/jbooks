@@ -191,6 +191,9 @@ You will need data to run these notebooks, see the Get the Data section.
     + This will show you GPU availability.
 =======
 
+ssh -i ~/Downloads/API_KEYs/comm-aai-ssh-key.pem -N -L localhost:8080:localhost:8080 fsclouduser@172.178.50.60
+
+
 # Ubuntu Clean up 
 + `sudo rm -rf /etc/modprobe.d/nvidia-graphics-drivers.conf`
 + `sudo update-initramfs -u`
