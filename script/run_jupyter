@@ -41,6 +41,6 @@ source ./script/load_conda
 echo ".......conda activate ${CONDA_ENV}";
 conda activate ${CONDA_ENV};
 
-echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"
+echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\' --no-browser"
 echo ".......calling this command.";
-${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'
+${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ip=${CODESPACE_IP_ADDR} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\' --no-browser

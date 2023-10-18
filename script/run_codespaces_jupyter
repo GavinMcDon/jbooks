@@ -37,6 +37,6 @@ fi
 
 echo "If using Codespaces open the Port from Private to Public after executing:";
 echo "Ensure you have called \"conda activate ${CONDA_ENV}\" before invoking this script.";
-echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'"
+echo ".......export CODESPACE_PORT=${CODESPACE_PORT}; ${JUPYTER_EXE} --port=${CODESPACE_PORT} --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\' --no-browser"
 echo ".......calling this command.";
-${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\'
+${JUPYTER_EXE} --port="${CODESPACE_PORT}" --ServerApp.disable_check_xsrf=True --ServerApp.allow_origin=\'*\' --no-browser
