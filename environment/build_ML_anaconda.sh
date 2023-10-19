@@ -6,7 +6,7 @@
 #to remove the environment
 #conda remove --name "environment name and path" --all
 
-export ROOT_DIR="/projects/app/anaconda";
+export ROOT_DIR="/opt/conda";
 export THE_INSTANCE="${ROOT_DIR}/envs/machine_learning";
 export CONDA_EXE="conda";
 

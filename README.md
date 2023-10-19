@@ -209,3 +209,5 @@ ssh -i ~/Downloads/API_KEYs/comm-aai-ssh-key.pem -N -L localhost:8080:localhost:
 + https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
 + https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 
++ Setup Jupyter with Password and configuration settings
+  + https://medium.com/@nyghtowl/setup-jupyter-notebook-access-on-google-compute-engine-with-https-ad69297f438b
