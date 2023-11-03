@@ -128,8 +128,10 @@ which will unpack the data into /workspaces/data.
 # Clean Up the Anaconda release to make disk space
 sudo $(which conda) clean --all -y
 
-# Cloud Provider CLI commands
+# Tensorflow Install
+https://cse.ucdenver.edu/~biswasa/posts/2023/08/biswas/blog-ubuntu-tensorflow/
 
+# Cloud Provider CLI commands
 Google Cloud Provider (GDP) - `gcloud`
 https://cloud.google.com/storage/docs/gsutil_install#linux
 
