@@ -31,6 +31,12 @@
 ## Code Linting
 # conda install -c conda-forge pylint autopep8 black -y
 
+## OpenAI
+# conda install -c conda-forge openai -y
+
+## LLM's
+# conda install -c conda-forege fire longchain transformers
+
 name: machine_learning_gpu # tensorflow-gpu environment -y
 channels:
   - conda-forge
