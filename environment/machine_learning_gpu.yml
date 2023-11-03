@@ -1,5 +1,6 @@
 ## filename: environment.yml
 #
+## Minimal setup
 # sudo $(which conda) create -n machine_learning_gpu python=3.9
 # conda activate machine_learning_gpu
 # sudo $(which conda) install -c conda-forge cudatoolkit=11.8.0 -y
@@ -7,22 +8,29 @@
 # pip install tensorflow==2.13.1 --user
 # pip install tensorrt --user
 # conda activate machine_learning_gpu
-## Science Libs
-# conda install -c conda-forge, anaconda numpy, pandas, tabulate, scipy, matplotlib
-## Jupyter
-# conda install -c conda-forge, anaconda jupyter, jupyterlab, jupyter_dashboards, jupyter_contrib_nbextensions
-## Progressbar
-# conda install -c conda-forge, anaconda nbconvert, tqdm
-## Environment File Definition
-# conda install -c conda-forge, anaconda scikit-learn
-## Tuning
-# conda install -c conda-forge, anaconda keras-tuner, optuna
-## Image Processing
-# conda install -c conda-forge, anaconda opencv, imageio, albumentations, imgaug
-## Code Linting
-# conda install -c conda-forge, anaconda pylint, autopep8, black
 
-name: machine_learning_gpu # tensorflow-gpu environment
+## Science Libs
+# conda install -c conda-forge numpy, pandas, tabulate, scipy, matplotlib -y
+
+## Jupyter
+# conda install -c conda-forge jupyter, jupyterlab, jupyter_dashboards, jupyter_contrib_nbextensions -y
+
+## Progressbar
+# conda install -c conda-forge nbconvert, tqdm -y
+
+## Environment File Definition
+# conda install -c conda-forge scikit-learn -y
+
+## Tuning
+# conda install -c conda-forge keras-tuner, optuna -y
+
+## Image Processing
+# conda install -c conda-forge opencv, imageio, albumentations, imgaug -y
+
+## Code Linting
+# conda install -c conda-forge pylint, autopep8, black -y
+
+name: machine_learning_gpu # tensorflow-gpu environment -y
 channels:
   - conda-forge
   - anaconda
