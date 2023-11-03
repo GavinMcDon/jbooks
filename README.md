@@ -131,10 +131,13 @@ sudo $(which conda) clean --all -y
 # Cloud Provider CLI commands
 
 Google Cloud Provider (GDP) - `gcloud`
+https://cloud.google.com/storage/docs/gsutil_install#linux
 
 Amazon Web Services (AWS) - `aws`
+https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html
 
 Azure - `az`
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script
 
 # Load new Kernel on the fly
 
