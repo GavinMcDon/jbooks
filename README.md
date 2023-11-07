@@ -9,9 +9,9 @@ If you want to clone this repository and setup the environment yourself please s
 If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
 ## Internal Links
-+ [GitHub Codespaces](#GitHub Codespaces)
-+ [GitHub Workflow](#GitHub Workflow)
-+ [Really Useful Notes](Useful_Notes)
++ [GitHub Codespaces](#GitHub-Codespaces)
++ [GitHub Workflow](#GitHub-Workflow)
++ [Useful Notes](Useful-Notes)
 + [References](#References)
 
 # Github Codespaces
@@ -245,7 +245,7 @@ https://cse.ucdenver.edu/~biswasa/posts/2023/08/biswas/blog-ubuntu-tensorflow/
 Azure - `az`
 [az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script)
 
-# Useful_Notes
+# Useful Notes
 
 ## Load new Kernel on the fly (not generic)
 ```
