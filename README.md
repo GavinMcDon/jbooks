@@ -16,19 +16,19 @@ The entire process is self-contained will build the environment, download the da
 Make sure you source your .bashrc prior to starting with this notebook on the command-line (CLI):
 
 ```
-source ~/.bashrc
+source ~/.bashrc;
 ```
 
 Also ensure, after sourcing your rc file, that you:
 
 ```
-conda activate machine_learning_gpu
+conda activate machine_learning_gpu;
 ```
 
 Then in the /workspaces/jbooks folder (which you should default in):
 
 ```
-./script/run_codespaces_jupyter
+./script/run_codespaces_jupyter;
 ```
 
 Load the resulting web page in your browser, ensuring you copy the session key from the CLI and pasting it into the dialog screen.
@@ -40,10 +40,10 @@ You will need data to run these notebooks, see the Get the Data section.
 # Run the Conda environment manually
 
 ```
-conda init bash
-source ~/.bashrc
-conda activate machine_learning_gpu
-/workspaces/jbooks/script/run_*_jupyter
+conda init bash;
+source ~/.bashrc;
+conda activate machine_learning_gpu;
+/workspaces/jbooks/script/run_codespaces_jupyter;
 ```
 
 # Build the environment using Anaconda manually (maybe on your laptop)
@@ -51,20 +51,20 @@ conda activate machine_learning_gpu
 ## Shows your environments
 
 ```
-conda info --envs
+conda info --envs;
 ```
 
 ## Activates or makes those libs available
 
 ```
-conda activate machine_learning_gpu
+conda activate machine_learning_gpu;
 ```
 
 
 ## Completly clears the slate and remove that environment
 
 ```
-conda remove --name machine_learning_gpu --all`
+conda remove --name machine_learning_gpu --all;
 ```
 
 ## Starts building the environment
@@ -72,17 +72,12 @@ conda remove --name machine_learning_gpu --all`
 #### Minimal setup (with intent of using GPU, focus is local user installation, Ubuntu 20.04)
 
 ```
-conda create -n machine_learning_gpu python=3.9
-
-conda activate machine_learning_gpu
-
-conda install -c conda-forge cudatoolkit=11.8.0 -y
-
-pip install nvidia-cudnn-cu11==8.6.0.163 --user
-
-pip install tensorflow==2.13.1 --user
-
-pip install tensorrt --user
+conda create -n machine_learning_gpu python=3.9;
+conda activate machine_learning_gpu;
+conda install -c conda-forge cudatoolkit=11.8.0 -y;
+pip install nvidia-cudnn-cu11==8.6.0.163 --user;
+pip install tensorflow==2.13.1 --user;
+pip install tensorrt --user;
 ```
 
 Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorrt and cudnn libs to your setup.
@@ -91,90 +86,91 @@ Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorr
 
 ```
 export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";
-
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";
 ```
+
 #### Additional (required) libraries by category
+
 ```
-conda activate machine_learning_gpu
+conda activate machine_learning_gpu;
 ```
 
 *Science Libs*
 
 ```
-conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y
+conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y;
 ```
 
 *Jupyter*
 
 ```
-conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y
+conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y;
 ```
 
 *Progressbar*
 
 ```
-conda install -c conda-forge nbconvert tqdm -y
+conda install -c conda-forge nbconvert tqdm -y;
 ```
 
 *Sci-Kit*
 
 ```
-conda install -c conda-forge scikit-learn -y
+conda install -c conda-forge scikit-learn -y;
 ```
 
 *Tuning*
 
 ```
-conda install -c conda-forge keras-tuner optuna -y
+conda install -c conda-forge keras-tuner optuna -y;
 ```
 
 *Image Processing*
 
 ```
-conda install -c conda-forge opencv imageio albumentations imgaug -y
+conda install -c conda-forge opencv imageio albumentations imgaug -y;
 ```
 
 *Code Linting*
 
 ```
-conda install -c conda-forge pylint autopep8 black -y
+conda install -c conda-forge pylint autopep8 black -y;
 ```
 
 *OpenAI*
 
 ```
-conda install -c conda-forge openai -y
+conda install -c conda-forge openai -y;
 ```
 
 *Large Language Model (LLM) Infrastructure*
 
 ```
-conda install -c conda-forege fire longchain transformers
+conda install -c conda-forege fire longchain transformers;
 ```
 
 *Natural Language Processing (NLP)*
 
 ```
-conda install -c conda-forge pathlib nltk wordcloud bs4  -y
+conda install -c conda-forge pathlib nltk wordcloud bs4 -y;
 ```
 
 *Pip (Nltk, Graphics Lib, Non-Anaconda, not available via Anaconda)*
 
 ```
-pip install svgling --user
+pip install svgling --user;
 ```
 
 *Extra tools (NetCDF, Xarray, Logging)*
 
 ```
-conda install -c conda-forge netCDF4 xarray icecream geopandas
+conda install -c conda-forge netCDF4 xarray icecream geopandas;
 ```
 
 *Plotting Packages and GIS*
 
 ```
-conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn
+conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn;
 ```
 
 ***OR use***
@@ -182,7 +178,7 @@ conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn
 # Environment export / creation methods
 
 ```
-sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml
+sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml;
 ```
 
 # Get the data
@@ -193,106 +189,117 @@ https://drive.google.com/file/d//1vSq-KCfEL_KoxdE4lxeO2rEKU77kiEkR/view?usp=shar
 Create the following directories:
 
 ```
-mkdir -p /workspaces/tmp
-
-mkdir -p /workspaces/logs
-
-mkdir -p /workspaces/data
+mkdir -p /workspaces/tmp;
+mkdir -p /workspaces/logs;
+mkdir -p /workspaces/data;
 ```
 
 Then in /workspaces
 
 ```
-tar xvfz ./data.tgz
+tar xvfz ./data.tgz;
 ```
 
 which will unpack the data into /workspaces/data.
 
-
 # To create an environment file:
 
 ***Stripped down version of an environment***
-
-`sudo $(which conda) env export --from-history --name machine_learning_gpu > striped.yml`
+```
+sudo $(which conda) env export --from-history --name machine_learning_gpu > striped.yml;
+```
 
 ***Most secure method cross-platform***
-
-`sudo $(which conda) env export --no-builds  --name machine_learning_gpu > ./environment/archless_environment.yml`
+```
+sudo $(which conda) env export --no-builds  --name machine_learning_gpu > ./environment/archless_environment.yml;
+```
 
 ***Most generic method***
-
-`sudo $(which conda) env export --name machine_learning_gpu > ./environment/environment.yml`
-
+```
+sudo $(which conda) env export --name machine_learning_gpu > ./environment/environment.yml;
+```
 
 # Clean Up the Anaconda release to make disk space
-sudo $(which conda) clean --all -y
+```
+sudo $(which conda) clean --all -y;
+```
 
-# Tensorflow Install
+# References
+
+## Tensorflow Install Reference
 https://cse.ucdenver.edu/~biswasa/posts/2023/08/biswas/blog-ubuntu-tensorflow/
 
-# Cloud Provider CLI commands
-Google Cloud Provider (GDP) - `gcloud`
-https://cloud.google.com/storage/docs/gsutil_install#linux
+## Cloud Provider CLI commands
 
-Amazon Web Services (AWS) - `aws`
-https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html
+### Google Cloud Provider (GDP) - `gcloud`
+[gcloud](https://cloud.google.com/storage/docs/gsutil_install#linux)
+
+### Amazon Web Services (AWS) - `aws`
+[aws](https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html)
 
 Azure - `az`
-https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script
+[az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script)
 
-# Load new Kernel on the fly
+# Really Useful Notes
 
-+ mamba env create -f /home/jovyan/environment.yml
+## Load new Kernel on the fly (not generic)
+```
+mamba env create -f /home/jovyan/environment.yml;
+echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/jovyan/.bash_profile;
+echo "conda deactivate" >> /home/jovyan/.bash_profile;
+echo "conda activate <your environment name>" >> /home/jovyan/.bash_profile;
+. /opt/conda/etc/profile.d/conda.sh;
+conda activate <your environment name>;
+python -m ipykernel install --user --name <your environment name>;
+source /home/jovyan/.bash_profile;
+```
 
-+ echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/jovyan/.bash_profile
-
-+ echo "conda deactivate" >> /home/jovyan/.bash_profile
-
-+ echo "conda activate <your environment name>" >> /home/jovyan/.bash_profile
-
-+ . /opt/conda/etc/profile.d/conda.sh
-
-+ conda activate <your environment name>
-
-+ python -m ipykernel install --user --name <your environment name>
-
-+ source /home/jovyan/.bash_profile
-
-Your Jupyter enviroment will start showing in 10-20 seconds.
+*Your Jupyter enviroment will start showing in 10-20 seconds.*
 
 You will need data to run these notebooks, see the Get the Data section.
 
-# Ubuntu Server Install GPU Drivers
+## Ubuntu Server (20.4) Install GPU Drivers in general
 
-+ `find /lib/modules/$(uname -r) -type f -name '*.ko'`
-    + Display all available modules. 
+### Display all available modules. 
+```
+find /lib/modules/$(uname -r) -type f -name "\*.ko";
+```
 
-+ `lshw`
-+ `sudo lshw -c video`
-    + See the list of available HW.
-+ `sudo ubuntu-drivers list`
-    + See what is actually available.
-+ `sudo apt-get install linux-headers-$(uname -r)`
-+ `sudo apt-key del 7fa2af80`
-+ `sudo apt install build-essential libglvnd-dev pkg-config`
-+ `sudo ubuntu-drivers install –-gpgpu`
-    + This method worked best and gives you the best possible drive (maybe).
-#  + `sudo apt-get install cuda-drivers-535`
-#  + `sudo apt-get install nvidia-kernel-open-535`
-#  + `sudo apt install nvidia-utils-535-server`
-#  + Install utility tools like `nvidia-smi`
-+ `sudo ubuntu-drivers list`
-    + See what actually got installed.
-+ `sudo ubuntu-drivers install --gpgpu`
-    + This method worked best and gives you the best possible drive.
-+ `sudo reboot now`
-    + Restart the system because the kernel modules for the driver need to be loaded (easiest).
-+ `cat /proc/driver/nvidia/version`
-    + What version are you using?
-+ `lsmod | grep nvidia`
-    + Are the kernel modules loaded?
-+ `nvidia-smi`
-    + This will show you GPU availability.
+### Show Hardware
+`lshw;`
+
+### Show Video Card
+`sudo lshw -c video;`
+
+### See the list of available HW.
+`sudo ubuntu-drivers list;`
+
+### See what is actually available.
+`sudo apt-get install linux-headers-$(uname -r);`
+
+`sudo apt-key del 7fa2af80;`
+
+`sudo apt install build-essential libglvnd-dev pkg-config;`
+
+*This method worked best and gives you the best possible drive (maybe).*
+`sudo ubuntu-drivers install –-gpgpu;`
+
+*Restart the system because the kernel modules for the driver need to be loaded (easiest).*
+`sudo reboot now;`
+
+
+*What version are you using?*
+`cat /proc/driver/nvidia/version;`
+
+*Are the kernel modules loaded?*
+`lsmod | grep nvidia;`
+
+*This will show you GPU availability.*
+`nvidia-smi;`
+
+*Show graphics driver details*
+`nvidia-smi --query-gpu=driver_version --format=csv`
+
 =======
 
 ssh -i ~/Downloads/API_KEYs/comm-aai-ssh-key.pem -N -L localhost:8080:localhost:8080 fsclouduser@172.178.50.60
