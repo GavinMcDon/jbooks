@@ -66,7 +66,7 @@ You will need data to run these notebooks, see the Get the Data section.
 
 Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorrt and cudnn libs to your setup.
 
-** Example only, your milage may vary. **
+**Example only, your milage may vary.**
 
 `export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";`
 `export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";`
