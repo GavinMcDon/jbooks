@@ -1,4 +1,4 @@
-# Jbooks
+# Jupyter Notebooks for Data Science and AI/ML
 
 Jupyter Notebooks for general data science, machine learning efforts (training), and Large Language Model (LLM) work.
 
@@ -8,10 +8,11 @@ If you want to clone this repository and setup the environment yourself please s
 
 If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
-[GitHub Codespaces](#GitHub Codespaces)
-[GitHub Workflow](#GitHub Workflow)
-[Really Useful Notes](Really Useful Notes)
-[References](#References)
+## Internal Links
++ [GitHub Codespaces](#GitHub Codespaces)
++ [GitHub Workflow](#GitHub Workflow)
++ [Really Useful Notes](Really Useful Notes)
++ [References](#References)
 
 # Github Codespaces
 
