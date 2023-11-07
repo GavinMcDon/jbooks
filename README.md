@@ -6,13 +6,7 @@ This repository contains a series of Jupyter Notebooks for general Jupyter learn
 
 If you want to clone this repository and setup the environment yourself please see the instructions for building Anaconda manually, although I recommend using the pre-built environment file.
 
-If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
-
-## Internal Links
-+ [GitHub Codespaces](#GitHub-Codespaces)
-+ [GitHub Workflow](#GitHub-Workflow)
-+ [Useful Notes](Useful-Notes)
-+ [References](#References)
+If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone [my configs folder](https://github.com/christophergarthwood/configs) and [update your settings](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
 # Github Codespaces
 
@@ -322,7 +316,7 @@ sudo reboot now;
 `ssh -i ${the_key} -N -L localhost:8080:localhost:8080 ${the_user}@${the_ip}
 
 
-### GitHub Workflow
+# GitHub Workflow
 
 + [Quickstart](https://docs.github.com/en/actions/quickstart)
 + [Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
