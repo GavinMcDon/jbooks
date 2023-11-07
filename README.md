@@ -33,28 +33,36 @@ You will need data to run these notebooks, see the Get the Data section.
 
 # Run the Conda environment manually
 
-`conda init bash`
+```
+conda init bash
 
-`source ~/.bashrc`
+source ~/.bashrc
 
-`conda activate machine_learning_gpu`
+conda activate machine_learning_gpu
 
-`/workspaces/jbooks/script/run_*_jupyter`
+/workspaces/jbooks/script/run_*_jupyter
+```
 
 # Build the environment using Anaconda manually (maybe on your laptop)
 
 ## Shows your environments
 
-`conda info --envs` 
+```
+conda info --envs
+```
 
 ## Activates or makes those libs available
 
-`conda activate machine_learning_gpu`
+```
+conda activate machine_learning_gpu
+```
 
 
 ## Completly clears the slate and remove that environment
 
-`conda remove --name machine_learning_gpu --all` 
+```
+conda remove --name machine_learning_gpu --all`
+```
 
 ## Starts building the environment
 
@@ -84,65 +92,95 @@ export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";
 ```
 #### Additional (required) libraries by category
-`conda activate machine_learning_gpu`
+```
+conda activate machine_learning_gpu
+```
 
 *Science Libs*
 
-`conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y`
+```
+conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y
+```
 
 *Jupyter*
 
-`conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y`
+```
+conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y
+```
 
 *Progressbar*
 
-`conda install -c conda-forge nbconvert tqdm -y`
+```
+conda install -c conda-forge nbconvert tqdm -y
+```
 
 *Sci-Kit*
 
-`conda install -c conda-forge scikit-learn -y`
+```
+conda install -c conda-forge scikit-learn -y
+```
 
 *Tuning*
 
-`conda install -c conda-forge keras-tuner optuna -y`
+```
+conda install -c conda-forge keras-tuner optuna -y
+```
 
 *Image Processing*
 
-`conda install -c conda-forge opencv imageio albumentations imgaug -y`
+```
+conda install -c conda-forge opencv imageio albumentations imgaug -y
+```
 
 *Code Linting*
 
-`conda install -c conda-forge pylint autopep8 black -y`
+```
+conda install -c conda-forge pylint autopep8 black -y
+```
 
 *OpenAI*
 
-`conda install -c conda-forge openai -y`
+```
+conda install -c conda-forge openai -y
+```
 
 *Large Language Model (LLM) Infrastructure*
 
-`conda install -c conda-forege fire longchain transformers`
+```
+conda install -c conda-forege fire longchain transformers
+```
 
 *Natural Language Processing (NLP)*
 
-`conda install -c conda-forge pathlib nltk wordcloud bs4  -y`
+```
+conda install -c conda-forge pathlib nltk wordcloud bs4  -y
+```
 
 *Pip (Nltk, Graphics Lib, Non-Anaconda, not available via Anaconda)*
 
-`pip install svgling --user`
+```
+pip install svgling --user
+```
 
 *Extra tools (NetCDF, Xarray, Logging)*
 
-`conda install -c conda-forge netCDF4 xarray icecream geopandas`
+```
+conda install -c conda-forge netCDF4 xarray icecream geopandas
+```
 
 *Plotting Packages and GIS*
 
-`conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn`
+```
+conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn
+```
 
 ***OR use***
 
 # Environment export / creation methods
 
-`sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml`
+```
+sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml
+```
 
 # Get the data
 Download the tarfile and store it at /workspaces/ after untarring the file:
@@ -151,15 +189,19 @@ https://drive.google.com/file/d//1vSq-KCfEL_KoxdE4lxeO2rEKU77kiEkR/view?usp=shar
 
 Create the following directories:
 
-+ mkdir -p /workspaces/tmp
+```
+mkdir -p /workspaces/tmp
 
-+ mkdir -p /workspaces/logs
+mkdir -p /workspaces/logs
 
-+ mkdir -p /workspaces/data
+mkdir -p /workspaces/data
+```
 
 Then in /workspaces
 
-`tar xvfz ./data.tgz`
+```
+tar xvfz ./data.tgz
+```
 
 which will unpack the data into /workspaces/data.
 
