@@ -11,7 +11,7 @@ If you want to use GitHub's Codespaces simply initiate a Codespaces session from
 ## Internal Links
 + [GitHub Codespaces](#GitHub Codespaces)
 + [GitHub Workflow](#GitHub Workflow)
-+ [Really Useful Notes](Really Useful Notes)
++ [Really Useful Notes](Useful_Notes)
 + [References](#References)
 
 # Github Codespaces
@@ -245,7 +245,7 @@ https://cse.ucdenver.edu/~biswasa/posts/2023/08/biswas/blog-ubuntu-tensorflow/
 Azure - `az`
 [az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script)
 
-# Really Useful Notes
+# Useful_Notes
 
 ## Load new Kernel on the fly (not generic)
 ```
