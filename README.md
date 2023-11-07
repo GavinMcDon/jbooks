@@ -8,6 +8,10 @@ If you want to clone this repository and setup the environment yourself please s
 
 If you want to use GitHub's Codespaces simply initiate a Codespaces session from the main branch yourself.  Note that there is an assumption of syncing your dotfiles so either fork/clone my configs folder (https://github.com/christophergarthwood/configs) and update your settings (https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account) to point to the cloned configs repository.  By doing this you'll inherit an update to your shell environment that activates and registers anaconda.
 
+[GitHub Codespaces](#GitHub Codespaces)
+[GitHub Workflow](#GitHub Workflow)
+[Really Useful Notes](Really Useful Notes)
+[References](#References)
 
 # Github Codespaces
 
@@ -313,18 +317,17 @@ sudo apt remove *nvidia*;
 sudo reboot now;
 ```
 
-=======
-
 #### Example Jupyter Port Forwarding:
 `ssh -i ${the_key} -N -L localhost:8080:localhost:8080 ${the_user}@${the_ip}
 
 
-### Create A GitHub Workflow
+### GitHub Workflow
 
 + [Quickstart](https://docs.github.com/en/actions/quickstart)
 + [Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 
 # References
+
 + (Sharing Anaconda Environments)[https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html]
 + (NVIDIA Install Guide)[https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html]
 + (Jupyter Notebook Password Setup / Config)[https://medium.com/@nyghtowl/setup-jupyter-notebook-access-on-google-compute-engine-with-https-ad69297f438b]
