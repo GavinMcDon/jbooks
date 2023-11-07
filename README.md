@@ -66,14 +66,19 @@ conda activate machine_learning_gpu;
 conda remove --name machine_learning_gpu --all;
 ```
 
-## Starts building the environment
+# Building the Environment
 
-#### Minimal setup (with intent of using GPU, focus is local user installation, Ubuntu 20.04)
+## Environment export / creation methods
 
 ```
-conda create -n machine_learning_gpu python=3.9;
-conda activate machine_learning_gpu;
-conda install -c conda-forge cudatoolkit=11.8.0 -y;
+sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml;
+```
+
+***OR use***
+
+## Minimal setup (with intent of using GPU, focus is local user installation, Ubuntu 20.04)
+
+```
 pip install nvidia-cudnn-cu11==8.6.0.163 --user;
 pip install tensorflow==2.13.1 --user;
 pip install tensorrt --user;
@@ -86,6 +91,13 @@ Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorr
 ```
 export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";
+```
+
+### Anaconda Setup by Hand
+```
+conda create -n machine_learning_gpu python=3.9;
+conda activate machine_learning_gpu;
+conda install -c conda-forge cudatoolkit=11.8.0 -y;
 ```
 
 #### Additional (required) libraries by category
@@ -172,13 +184,6 @@ conda install -c conda-forge netCDF4 xarray icecream geopandas;
 conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn;
 ```
 
-***OR use***
-
-# Environment export / creation methods
-
-```
-sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml;
-```
 
 # Get the data
 Download the tarfile and store it at /workspaces/ after untarring the file:
