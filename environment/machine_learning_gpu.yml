@@ -37,6 +37,16 @@
 ## LLM's
 # conda install -c conda-forege fire longchain transformers
 
+## Extra tools
+#conda install -c conda-forge netCDF4 xarray icecream geopandas seaborn
+#
+## Extra tools
+#conda install -c conda-forge cartopy holoviews hvplot
+
+## Pip (Nltk, Graphics Lib, Non-Anaconda)
+# pip install svgling --user
+
+
 name: machine_learning_gpu # tensorflow-gpu environment -y
 channels:
   - conda-forge

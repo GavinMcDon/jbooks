@@ -1,6 +1,6 @@
 # Jbooks
 
-Jupyter Notebooks for general data science and machine learning efforts (training).
+Jupyter Notebooks for general data science, machine learning efforts (training), and Large Language Model (LLM) work.
 
 This repository contains a series of Jupyter Notebooks for general Jupyter learning and AI/ML efforts.  Each notebook is numbered stating at 001 progressing numerically as concepts get more involved.  All AI/ML notebooks start with ML_.
 
@@ -19,7 +19,7 @@ Make sure you source your .bashrc prior to starting with this notebook on the co
 
 Also ensure, after sourcing your rc file, that you:
 
-`conda activate machine_learning`
+`conda activate machine_learning_gpu`
 
 Then in the /workspaces/jbooks folder (which you should default in):
 
@@ -41,18 +41,87 @@ You will need data to run these notebooks, see the Get the Data section.
 
 ## Activates or makes those libs available
 
-`conda activate machine_learning`
+`conda activate machine_learning_gpu`
 
 
 ## Completly clears the slate and remove that environment
 
-`conda remove --name machine_learning --all` 
+`conda remove --name machine_learning_gpu --all` 
 
 ## Starts building the environment
 
-`conda create --name machine_learning -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
+### Minimal setup (with intent of using GPU, focus is local user installation)
 
-`conda activate machine_learning`
+`conda create -n machine_learning_gpu python=3.9`
+
+`conda activate machine_learning_gpu`
+
+`conda install -c conda-forge cudatoolkit=11.8.0 -y`
+
+`pip install nvidia-cudnn-cu11==8.6.0.163 --user`
+
+`pip install tensorflow==2.13.1 --user`
+
+`pip install tensorrt --user`
+
+Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorrt and cudnn libs to your setup.
+
+** Example only, your milage may vary. **
+
+`export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";`
+`export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";`
+
+
+`conda activate machine_learning_gpu
+
+** Science Libs **
+# conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y
+
+## Jupyter
+# conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y
+
+## Progressbar
+# conda install -c conda-forge nbconvert tqdm -y
+
+## Environment File Definition
+# conda install -c conda-forge scikit-learn -y
+
+## Tuning
+# conda install -c conda-forge keras-tuner optuna -y
+
+## Image Processing
+# conda install -c conda-forge opencv imageio albumentations imgaug -y
+
+## Code Linting
+# conda install -c conda-forge pylint autopep8 black -y
+
+## OpenAI
+# conda install -c conda-forge openai -y
+
+## LLM's
+# conda install -c conda-forege fire longchain transformers
+
+## Extra tools
+#conda install -c conda-forge netCDF4 xarray icecream geopandas seaborn
+#
+## Extra tools
+#conda install -c conda-forge cartopy holoviews hvplot
+
+## Pip (Nltk, Graphics Lib, Non-Anaconda)
+# pip install svgling --user
+
+
+name: machine_learning_gpu # tensorflow-gpu environment -y
+channels:
+  - conda-forge
+  - anaconda
+  - default
+dependencies:
+  - python=3.9
+
+`conda create --name machine_learning_gpu -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
+
+`conda activate machine_learning_gpu`
 
 `conda install imageio seaborn plotly bokeh matplotlib  -y`
 
@@ -66,9 +135,9 @@ You will need data to run these notebooks, see the Get the Data section.
 
 `CONDA_EXE=${which conda}`
 
-`${CONDA_EXE} activate machine_learning`
+`${CONDA_EXE} activate machine_learning_gpu`
 
-`${CONDA_EXE} create --name machine_learning -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
+`${CONDA_EXE} create --name machine_learning_gpu -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
 
 `${CONDA_EXE} install -c conda-forge cartopy -y`
 
@@ -78,7 +147,7 @@ You will need data to run these notebooks, see the Get the Data section.
 
 # Environment export / creation methods
 
-`sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning/ --file ./environment/archless_environment.yml`
+`sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/archless_environment.yml`
 
 
 # Get the data
@@ -106,7 +175,7 @@ which will unpack the data into /workspaces/data.
 
 `source ~/.bashrc`
 
-`conda activate machine_learning`
+`conda activate machine_learning_gpu`
 
 `/workspaces/jbooks/script/run_*_jupyter`
 
@@ -114,15 +183,15 @@ which will unpack the data into /workspaces/data.
 
 ***Stripped down version of an environment***
 
-`sudo $(which conda) env export --from-history --name machine_learning > striped.yml`
+`sudo $(which conda) env export --from-history --name machine_learning_gpu > striped.yml`
 
 ***Most secure method cross-platform***
 
-`sudo $(which conda) env export --no-builds  --name machine_learning > ./environment/archless_environment.yml`
+`sudo $(which conda) env export --no-builds  --name machine_learning_gpu > ./environment/archless_environment.yml`
 
 ***Most generic method***
 
-`sudo $(which conda) env export --name machine_learning > ./environment/environment.yml`
+`sudo $(which conda) env export --name machine_learning_gpu > ./environment/environment.yml`
 
 
 # Clean Up the Anaconda release to make disk space
