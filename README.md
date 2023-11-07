@@ -15,15 +15,21 @@ The entire process is self-contained will build the environment, download the da
 
 Make sure you source your .bashrc prior to starting with this notebook on the command-line (CLI):
 
-`source ~/.bashrc`
+```
+source ~/.bashrc
+```
 
 Also ensure, after sourcing your rc file, that you:
 
-`conda activate machine_learning_gpu`
+```
+conda activate machine_learning_gpu
+```
 
 Then in the /workspaces/jbooks folder (which you should default in):
 
-`./script/run_codespaces_jupyter`
+```
+./script/run_codespaces_jupyter
+```
 
 Load the resulting web page in your browser, ensuring you copy the session key from the CLI and pasting it into the dialog screen.
 
@@ -35,11 +41,8 @@ You will need data to run these notebooks, see the Get the Data section.
 
 ```
 conda init bash
-
 source ~/.bashrc
-
 conda activate machine_learning_gpu
-
 /workspaces/jbooks/script/run_*_jupyter
 ```
 
