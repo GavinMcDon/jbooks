@@ -31,7 +31,15 @@ Your Jupyter enviroment will start showing in 10-20 seconds.
 
 You will need data to run these notebooks, see the Get the Data section.
 
+# Run the Conda environment manually
 
+`conda init bash`
+
+`source ~/.bashrc`
+
+`conda activate machine_learning_gpu`
+
+`/workspaces/jbooks/script/run_*_jupyter`
 
 # Build the environment using Anaconda manually (maybe on your laptop)
 
@@ -50,105 +58,91 @@ You will need data to run these notebooks, see the Get the Data section.
 
 ## Starts building the environment
 
-### Minimal setup (with intent of using GPU, focus is local user installation)
+#### Minimal setup (with intent of using GPU, focus is local user installation, Ubuntu 20.04)
 
-`conda create -n machine_learning_gpu python=3.9`
+```
+conda create -n machine_learning_gpu python=3.9
 
-`conda activate machine_learning_gpu`
+conda activate machine_learning_gpu
 
-`conda install -c conda-forge cudatoolkit=11.8.0 -y`
+conda install -c conda-forge cudatoolkit=11.8.0 -y
 
-`pip install nvidia-cudnn-cu11==8.6.0.163 --user`
+pip install nvidia-cudnn-cu11==8.6.0.163 --user
 
-`pip install tensorflow==2.13.1 --user`
+pip install tensorflow==2.13.1 --user
 
-`pip install tensorrt --user`
+pip install tensorrt --user
+```
 
 Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorrt and cudnn libs to your setup.
 
-**Example only, your milage may vary.**
+*Example only, your milage may vary.*
 
-`export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";`
-`export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";`
+```
+export LD_LIBRARY_PATH="/usr/lib:/usr/lib64";
 
-
-`conda activate machine_learning_gpu
-
-** Science Libs **
-# conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y
-
-## Jupyter
-# conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y
-
-## Progressbar
-# conda install -c conda-forge nbconvert tqdm -y
-
-## Environment File Definition
-# conda install -c conda-forge scikit-learn -y
-
-## Tuning
-# conda install -c conda-forge keras-tuner optuna -y
-
-## Image Processing
-# conda install -c conda-forge opencv imageio albumentations imgaug -y
-
-## Code Linting
-# conda install -c conda-forge pylint autopep8 black -y
-
-## OpenAI
-# conda install -c conda-forge openai -y
-
-## LLM's
-# conda install -c conda-forege fire longchain transformers
-
-## Extra tools
-#conda install -c conda-forge netCDF4 xarray icecream geopandas seaborn
-#
-## Extra tools
-#conda install -c conda-forge cartopy holoviews hvplot
-
-## Pip (Nltk, Graphics Lib, Non-Anaconda)
-# pip install svgling --user
-
-
-name: machine_learning_gpu # tensorflow-gpu environment -y
-channels:
-  - conda-forge
-  - anaconda
-  - default
-dependencies:
-  - python=3.9
-
-`conda create --name machine_learning_gpu -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
-
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib:/usr/lib64:${PATH_ROOT}/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:${PATH_ROOT}/.local/lib/python3.9/site-packages/tensorrt_libs";
+```
+#### Additional (required) libraries by category
 `conda activate machine_learning_gpu`
 
-`conda install imageio seaborn plotly bokeh matplotlib  -y`
+*Science Libs*
 
-`conda install -c conda-forge pathlib netcdf4 nltk wordcloud bs4  -y`
+`conda install -c conda-forge numpy pandas tabulate scipy matplotlib -y`
 
-`conda install -c conda-forge proj -y`
+*Jupyter*
 
-`conda install -c conda-forge contextily descartes geopandas cartopy shapely  -y`
+`conda install -c conda-forge jupyter jupyterlab jupyter_dashboards jupyter_contrib_nbextensions -y`
 
-# Build the environment using Anaconda manually in Codespaces
+*Progressbar*
 
-`CONDA_EXE=${which conda}`
+`conda install -c conda-forge nbconvert tqdm -y`
 
-`${CONDA_EXE} activate machine_learning_gpu`
+*Sci-Kit*
 
-`${CONDA_EXE} create --name machine_learning_gpu -y python=3.9 tensorflow tensorflow-datasets tensorflow-gpu jupyter jupyterlab pandas numpy mkl scikit-learn gdal`
+`conda install -c conda-forge scikit-learn -y`
 
-`${CONDA_EXE} install -c conda-forge cartopy -y`
+*Tuning*
 
-`${CONDA_EXE} update --all -c conda-foge -y`
+`conda install -c conda-forge keras-tuner optuna -y`
+
+*Image Processing*
+
+`conda install -c conda-forge opencv imageio albumentations imgaug -y`
+
+*Code Linting*
+
+`conda install -c conda-forge pylint autopep8 black -y`
+
+*OpenAI*
+
+`conda install -c conda-forge openai -y`
+
+*Large Language Model (LLM) Infrastructure*
+
+`conda install -c conda-forege fire longchain transformers`
+
+*Natural Language Processing (NLP)*
+
+`conda install -c conda-forge pathlib nltk wordcloud bs4  -y`
+
+*Pip (Nltk, Graphics Lib, Non-Anaconda, not available via Anaconda)*
+
+`pip install svgling --user`
+
+*Extra tools (NetCDF, Xarray, Logging)*
+
+`conda install -c conda-forge netCDF4 xarray icecream geopandas`
+
+*Plotting Packages and GIS*
+
+`conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn`
 
 ***OR use***
 
 # Environment export / creation methods
 
-`sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/archless_environment.yml`
-
+`sudo $(which conda) env create --prefix /opt/conda/envs/machine_learning_gpu/ --file ./environment/environment.yml`
 
 # Get the data
 Download the tarfile and store it at /workspaces/ after untarring the file:
@@ -169,15 +163,6 @@ Then in /workspaces
 
 which will unpack the data into /workspaces/data.
 
-# Register the Conda environment manually
-
-`conda init bash`
-
-`source ~/.bashrc`
-
-`conda activate machine_learning_gpu`
-
-`/workspaces/jbooks/script/run_*_jupyter`
 
 # To create an environment file:
 
