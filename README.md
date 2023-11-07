@@ -282,43 +282,49 @@ find /lib/modules/$(uname -r) -type f -name "\*.ko";
 `sudo apt install build-essential libglvnd-dev pkg-config;`
 
 *This method worked best and gives you the best possible drive (maybe).*
+
 `sudo ubuntu-drivers install –-gpgpu;`
 
 *Restart the system because the kernel modules for the driver need to be loaded (easiest).*
+
 `sudo reboot now;`
 
-
 *What version are you using?*
+
 `cat /proc/driver/nvidia/version;`
 
 *Are the kernel modules loaded?*
+
 `lsmod | grep nvidia;`
 
 *This will show you GPU availability.*
+
 `nvidia-smi;`
 
 *Show graphics driver details*
+
 `nvidia-smi --query-gpu=driver_version --format=csv`
+
+### Ubuntu Clean up 
+```
+sudo rm -rf /etc/modprobe.d/nvidia-graphics-drivers.conf;
+sudo update-initramfs -u;
+sudo apt remove *nvidia*;
+sudo reboot now;
+```
 
 =======
 
-ssh -i ~/Downloads/API_KEYs/comm-aai-ssh-key.pem -N -L localhost:8080:localhost:8080 fsclouduser@172.178.50.60
+#### Example Jupyter Port Forwarding:
+`ssh -i ${the_key} -N -L localhost:8080:localhost:8080 ${the_user}@${the_ip}
 
 
-# Ubuntu Clean up 
-+ `sudo rm -rf /etc/modprobe.d/nvidia-graphics-drivers.conf`
-+ `sudo update-initramfs -u`
-+ `sudo apt remove *nvidia*`
-+ `sudo reboot now`
+### Create A GitHub Workflow
 
-# Create A GitHub Workflow
-
-+ https://docs.github.com/en/actions/quickstart
-+ https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
++ [Quickstart](https://docs.github.com/en/actions/quickstart)
++ [Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 
 # References
-+ https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
-+ https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
-
-+ Setup Jupyter with Password and configuration settings
-  + https://medium.com/@nyghtowl/setup-jupyter-notebook-access-on-google-compute-engine-with-https-ad69297f438b
++ (Sharing Anaconda Environments)[https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html]
++ (NVIDIA Install Guide)[https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html]
++ (Jupyter Notebook Password Setup / Config)[https://medium.com/@nyghtowl/setup-jupyter-notebook-access-on-google-compute-engine-with-https-ad69297f438b]
