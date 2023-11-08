@@ -479,6 +479,7 @@ dependencies:
   - terminado=0.17.1=pyh41d4057_0
   - threadpoolctl=3.2.0=pyha21a80b_0
   - tifffile=2023.9.26=pyhd8ed1ab_0
+  - tiktoken=0.5.1=py39h1e49f91_0
   - tiledb=2.16.3=hf0b6e87_3
   - tinycss2=1.2.1=pyhd8ed1ab_0
   - tk=8.6.13=h2797004_0
@@ -549,4 +550,4 @@ dependencies:
   - zlib=1.2.13=hd590300_5
   - zlib-ng=2.0.7=h0b41bf4_0
   - zstd=1.5.5=hfc55251_0
-prefix: /opt/conda/envs/machine_learning_gpu
+prefix: /projects/app/anaconda/envs/machine_learning_gpu

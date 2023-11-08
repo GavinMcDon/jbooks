@@ -40,4 +40,5 @@ dependencies:
   - wordcloud
   - bs4
   - svglib
-prefix: /opt/conda/envs/machine_learning_gpu
+  - tiktoken
+prefix: /projects/app/anaconda/envs/machine_learning_gpu
