@@ -42,4 +42,5 @@ dependencies:
   - svglib
   - tiktoken
   - pathlib
+  - contextily
 prefix: /projects/app/anaconda/envs/machine_learning_gpu
