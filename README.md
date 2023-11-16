@@ -172,6 +172,12 @@ conda install -c conda-forge pathlib nltk wordcloud bs4 -y;
 pip install svgling --user;
 ```
 
+*Install PDF reader*
+
+```
+pip install PyMuPDF --user;
+```
+
 *Extra tools (NetCDF, Xarray, Logging)*
 
 ```
