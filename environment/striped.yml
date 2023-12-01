@@ -1,6 +1,6 @@
 name: machine_learning_gpu
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - python=3.9
   - numpy
@@ -43,4 +43,6 @@ dependencies:
   - tiktoken
   - pathlib
   - contextily
-prefix: /opt/app/anaconda/envs/machine_learning_gpu
+  - gensim
+  - bertopic
+prefix: /projects/app/anaconda/envs/machine_learning_gpu

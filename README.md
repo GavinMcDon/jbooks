@@ -166,7 +166,13 @@ conda install -c conda-forege fire longchain transformers;
 conda install -c conda-forge pathlib nltk wordcloud bs4 -y;
 ```
 
-*Pip (Nltk, Graphics Lib, Non-Anaconda, not available via Anaconda)*
+*Additional NLP Libraries (Sonya)*
+
+```
+conda install -c conda-forge bertopic gensim
+```
+
+*Pip (Nltk inspired Graphics Lib, Non-Anaconda, not available via Anaconda)*
 
 ```
 pip install svgling --user;
@@ -189,6 +195,7 @@ conda install -c conda-forge netCDF4 xarray icecream geopandas;
 ```
 conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn;
 ```
+
 
 
 # Get the data
