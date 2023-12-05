@@ -7,7 +7,18 @@
 #    \ V / ___ \|  _ < | | / ___ \| |_) | |___| |___ ___) |
 #     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
 #############################################################
-export THE_CONFIG_DIR="./cfg/";
+echo "Verifying location for script execution.";
+if [ ! -d ./.git ];
+then
+    echo "...This script must be run from the root directory of this repository.";
+    echo "......aborting execution, please ensure you run ./script/bootstrap.";
+    exit 1;
+else
+    echo "...verified script execution location is correct.";
+fi
+
+echo "Installing required dependencies for Anaconda";
+export THE_CONFIG_DIR="./cfg";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
 echo "...establishing variables.";

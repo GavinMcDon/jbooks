@@ -20,8 +20,18 @@ echo "BEGIN";
 #     \_/_/   \_\_| \_\___/_/   \_\____/|_____|_____|____/
 #############################################################
 
+echo "Verifying location for script execution.";
+if [ ! -d ./.git ];
+then
+    echo "...This script must be run from the root directory of this repository.";
+    echo "......aborting execution, please ensure you run ./script/bootstrap.";
+    exit 1;
+else
+    echo "...verified script execution location is correct.";
+fi
+
 echo "Installing required dependencies for Anaconda";
-export THE_CONFIG_DIR="/workspaces/jbooks/cfg";
+export THE_CONFIG_DIR="./cfg";
 export THE_CONFIG="${THE_CONFIG_DIR}/config.env";
 
 echo "...establishing variables.";
@@ -145,11 +155,31 @@ pip install PyMuPDF --user;
 #================================================================
 # Install required Anaconda Packages
 #================================================================
+echo "...installing Anaconda environment.";
 if [ -f "${CONDA_EXE}" ];
 then
     if [ -f "${CONDA_EXE}" ];
     then
-        sudo ${CONDA_EXE} env create --file "${THE_ANACONDA_ENV}"
+        for the_environment in ${THE_ANACONDA_ENV[@]}
+        do
+            target_environment_file="${PROJECT_DIR}/environment/${the_environment}.yml";
+            if [ -f "${target_environment_file}" ];
+            then
+                sudo ${CONDA_EXE} env create --file "${target_environment_file}";
+                export status=$?;
+                if [ "${status}" -eq 0 ];
+                then
+                    echo "......${the_environment} environment completed.";
+                else
+                    echo "......FAILED to install ${the_environment} environment.";
+                    echo ".........status code (${status}) returned.";
+                fi
+            else
+                echo "...FAILED to detect the (${target_environment_file}), without this file installation cannot begin.";
+                echo "......locate / resolve the target environment file location and re-run this script.  Aborting execution.";
+                exit 1;
+            fi
+        done
     else
         echo "...unable to locate the conda executable ${THE_ANACONDA_ENV}, your repo has an issue.";
     fi
@@ -158,14 +188,15 @@ else
 fi
 
 
+
 #================================================================
 #- Install required folders and data associated with this effort
 #================================================================
 for the_dir in ${THE_DIRS[@]}
 do
     echo "...creating ${the_dir}"
-    mkdir -p "/workspaces/${the_dir}" || echo "......failed to create /workspaces/${the_dir}, expect the notebook to fail.";
-    ${CHMOD_EXE} -R u+rwx "/workspaces/${the_dir}";
+    mkdir -p "${THE_ROOT}/${the_dir}" || echo "......failed to create ${THE_ROOT}/${the_dir}, expect the notebook to fail.";
+    ${CHMOD_EXE} -R u+rwx "${THE_ROOT}/${the_dir}";
 done
 
 #================================================================
