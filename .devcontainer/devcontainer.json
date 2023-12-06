@@ -12,7 +12,7 @@
     "image": "mcr.microsoft.com/devcontainers/base:debian",
 
     "hostRequirements": {
-       "cpus":    2,
+       "cpus":    4,
        "memory": "8gb",
        "storage":"60gb"
     },
