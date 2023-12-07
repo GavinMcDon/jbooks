@@ -60,9 +60,9 @@ RUN pip install --no-cache-dir --upgrade pip
 
 WORKDIR /workspaces/jbooks/environment
 
-COPY requirements.txt requirements.txt
+COPY /workspaces/jbooks/environment/requirements.txt ./requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt --user
+RUN pip install --no-cache-dir -r ./requirements.txt --user
 
 
 #########################################
