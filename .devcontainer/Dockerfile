@@ -58,9 +58,9 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 RUN pip install --no-cache-dir --upgrade pip 
 
-WORKDIR /workspaces/jbooks/environment
+WORKDIR /var/libdocker/codespacemount/workspaces/jbooks/environment
 
-COPY /workspaces/jbooks/environment/requirements.txt ./requirements.txt
+#COPY /workspaces/jbooks/environment/requirements.txt ./requirements.txt
 
 RUN pip install --no-cache-dir -r ./requirements.txt --user
 
