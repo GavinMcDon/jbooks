@@ -58,7 +58,7 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 #WORKDIR /usr/src/app
 
-COPY requirements.txt ./
+#COPY requirements.txt ./
 
 RUN pip install --no-cache-dir --upgrade pip 
 RUN pip install --no-cache-dir -r ./environment/requirements.txt --user
