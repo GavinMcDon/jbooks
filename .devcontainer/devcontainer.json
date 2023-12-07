@@ -81,7 +81,7 @@
           			"permissions": "read-all"
         			}
       		}
-    	}
-  }
+       	    }
+        }
 
 } //end
