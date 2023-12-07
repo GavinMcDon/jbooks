@@ -58,7 +58,7 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 RUN pip install --no-cache-dir --upgrade pip 
 
-WORKDIR /workspace/jbooks/environment
+WORKDIR /workspaces/jbooks/environment
 
 COPY requirements.txt requirements.txt
 
