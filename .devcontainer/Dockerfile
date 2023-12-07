@@ -56,12 +56,13 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 #- Python Dependencies Installed (faster with Codespaces this way)
 #########################################
-#WORKDIR /usr/src/app
-
-#COPY requirements.txt ./
-
 RUN pip install --no-cache-dir --upgrade pip 
-RUN pip install --no-cache-dir -r ./environment/requirements.txt --user
+
+WORKDIR /workspace/jbooks/environment
+
+COPY requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt --user
 
 
 #########################################
