@@ -54,6 +54,18 @@ ARG PACKAGES=libgeos-dev
 RUN apt-get install ${PACKAGES} -y
 
 #########################################
+#- Python Dependencies Installed (faster with Codespaces this way)
+#########################################
+RUN pip install --no-cache-dir --upgrade pip 
+
+WORKDIR /workspace/jbooks/environment
+
+COPY requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt --user
+
+
+#########################################
 #- Final clean-up
 #########################################
 RUN apt-get clean -y
