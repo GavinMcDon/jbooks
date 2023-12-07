@@ -56,13 +56,10 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 #- Python Dependencies Installed (faster with Codespaces this way)
 #########################################
+ARG REQ_FILE="/var/lib/docker/codespacemount/workspaces/jbooks/environment/requirements.txt"
 RUN pip install --no-cache-dir --upgrade pip 
 
-WORKDIR /var/libdocker/codespacemount/workspaces/jbooks/environment
-
-#COPY /workspaces/jbooks/environment/requirements.txt ./requirements.txt
-
-RUN pip install --no-cache-dir -r ./requirements.txt --user
+RUN pip install --no-cache-dir -r ${REQ_FILE} --user
 
 
 #########################################
