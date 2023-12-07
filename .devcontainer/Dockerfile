@@ -56,10 +56,19 @@ RUN apt-get install ${PACKAGES} -y
 #########################################
 #- Python Dependencies Installed (faster with Codespaces this way)
 #########################################
-ARG REQ_FILE="/var/lib/docker/codespacemount/workspaces/jbooks/environment/requirements.txt"
 RUN pip install --no-cache-dir --upgrade pip 
 
-RUN pip install --no-cache-dir -r ${REQ_FILE} --user
+#CGW -> Unable to get requirements file visible during image build
+#       Moved pip installs to this location to "hopefully" speed up codespace
+#       setup using pre-builds.  These routines remain in bootstrap but are commented
+#       out to show where they could be
+#ARG REQ_FILE="/var/lib/docker/codespacemount/workspaces/jbooks/environment/requirements.txt"
+#RUN pip install --no-cache-dir -r ${REQ_FILE} --user
+RUN pip install --no-cache-dir nvidia-cudnn-cu11==8.6.0.163 --user
+RUN pip install --no-cache-dir tensorflow==2.13.1 --user
+RUN pip install --no-cache-dir tensorrt --user
+RUN pip install --no-cache-dir svgling --user
+RUN pip install --no-cache-dir PyMuPDF --user
 
 
 #########################################
