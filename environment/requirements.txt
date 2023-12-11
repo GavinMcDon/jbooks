@@ -1,5 +1,5 @@
 nvidia-cudnn-cu11==8.6.0.163 
-tensorflow==2.13.1
-tensorrt
-svgling
-PyMuPDF
+tensorflow==2.13.1 
+tensorrt 
+svgling 
+PyMuPDF 

@@ -151,7 +151,6 @@ sudo /usr/sbin/usermod -aG "${THE_GROUP}" "${THE_USERNAME}"  || echo "...failed 
 #pip install tensorrt --user;
 #pip install svgling --user;
 #pip install PyMuPDF --user;
-#Moved to Dockerfile
 
 #================================================================
 # Install required Anaconda Packages
