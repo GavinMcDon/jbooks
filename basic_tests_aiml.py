@@ -6,7 +6,7 @@ import sklearn as sk
 import matplotlib as matplt
 
 #supress Tensorflow warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 print("SciPy version     #:{:>12}".format(sp.__version__))
 print("Sk-Learn version  #:{:>12}".format(sk.__version__))
@@ -33,7 +33,7 @@ except ImportError as e:
 
 try:
   import tensorflow as tf;
-  print("Tensorflow version#:{:>12}".format(pd.__version__))
+  print("Tensorflow version#:{:>12}".format(tf.__version__))
 except ImportError as e:
   print("ERROR:  Importing Tensorflow, " + str(e))
   print("Please install tensorflow library and check your PATH and PYTHONPATH variables.")
