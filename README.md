@@ -84,6 +84,8 @@ pip install tensorflow==2.13.1 --user;
 pip install tensorrt --user;
 ```
 
+TF-TRT, which stands for TensorFlow-TensorRT. It is a TensorFlow package that enables the optimization and deployment of TensorFlow models on NVIDIA GPUs using TensorRT. TensorRT is a high-performance deep learning inference optimizer and runtime library developed by NVIDIA.
+
 Ensure you update the LD_LIBRARY_PATH in your `~/.bashrc` to add the new tensorrt and cudnn libs to your setup.
 
 *Example only, your milage may vary.*
@@ -194,6 +196,12 @@ conda install -c conda-forge netCDF4 xarray icecream geopandas;
 
 ```
 conda install -c conda-forge cartopy holoviews hvplot bokeh seaborn;
+```
+
+*Google Model Garden - Vertex*
+
+```
+conda install -c conda-forge google-cloud-aiplatform;
 ```
 
 
@@ -330,8 +338,40 @@ sudo apt remove *nvidia*;
 sudo reboot now;
 ```
 
+## Useful Command(s)
+alias watch_gpu='watch -n 1 nvidia-smi'
+
 #### Example Jupyter Port Forwarding:
 `ssh -i ${the_key} -N -L localhost:8080:localhost:8080 ${the_user}@${the_ip}
+
+*** Note: Hyper-parameter tuning might cause an H5 lock issue.  Try: HDF5_USE_FILE_LOCKING='FALSE' on the OS. ***
+
+## GPU's / NVIDIA / Lambda Stack
+
+Things to know:
+
++  `watch -n 1 "nvidia-smi"` will result in a display of all GPU's (which also give you the Id's) and their utilization.
+
++  `nvidia-smi --gpu-reset` or `nvidia-smi -r` is supposed to reset the GPU's if something hangs them up...good luck.
+
++ If you want to constrain which GPU's are used do the following:
+
+    + In your calling SH script use `export CUDA_VISIBLE_DEVICES=${INTRO_GPU_NUMBER};`
+    + In your Python script use:
+    `
+        tf.debugging.set_log_device_placement(True)
+        gpus = tf.config.experimental.list_physical_devices('GPU')
+        print("Num Physical GPU's Available: {} ".format(len(tf.config.experimental.list_physical_devices('GPU'))))
+        print("Num Logical  GPU's Available: {} ".format(len(tf.config.experimental.list_logical_devices('GPU'))))
+        print("Num CPU's Available: {} ".format(len(tf.config.experimental.list_physical_devices('CPU'))))
+        print("...utiliting GPU #:0")
+            with tf.device(f"/job:localhost/replica:0/task:0/device:GPU:0"):
+
+     `
+
+     Notice how GPU:0 is referenced.  That's becuase you limited all GPU visibility at the shell level and the Python code can only see a single GPU.  It's a strategy.  Normally you can simply reference the GPU# in question but I've found that's not very reliable.
+
++ If you're having problems with GPU memory you can try, in your SH script: `export TF_FORCE_GPU_ALLOW_GROWTH="true"`
 
 
 # GitHub Workflow
@@ -344,3 +384,6 @@ sudo reboot now;
 + (Sharing Anaconda Environments)[https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html]
 + (NVIDIA Install Guide)[https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html]
 + (Jupyter Notebook Password Setup / Config)[https://medium.com/@nyghtowl/setup-jupyter-notebook-access-on-google-compute-engine-with-https-ad69297f438b]
++  https://github.com/parrt/dtreeviz
+
+
